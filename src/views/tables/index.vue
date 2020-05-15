@@ -1,9 +1,6 @@
 <template>
   <div>
-    <h3 :class="s.title">
-      action
-      <span>action</span>
-    </h3>
+    vue
   </div>
 </template>
 
@@ -17,11 +14,4 @@ export default {
 </script>
 
 <style lang="less" module="s">
-.title {
-  color: red;
-  span {
-    display: flex;
-    color: green;
-  }
-}
 </style>

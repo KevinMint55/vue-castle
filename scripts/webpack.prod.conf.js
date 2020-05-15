@@ -1,16 +1,11 @@
-const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const baseWebpackConfig = require('./webpack.base.conf.js');
 const config = require('./config');
-
-function resolve(dir) {
-  return path.join(__dirname, '..', dir);
-}
 
 const webpackConfig = {
   mode: 'production',
@@ -25,13 +20,6 @@ const webpackConfig = {
     new OptimizeCSSAssetsPlugin({}),
     // keep module.id stable when vendor modules does not change
     new webpack.HashedModuleIdsPlugin(),
-    new CopyWebpackPlugin([
-      {
-        from: resolve('src/static'),
-        to: 'static',
-        ignore: ['.*'],
-      },
-    ]),
   ],
   optimization: {
     splitChunks: {

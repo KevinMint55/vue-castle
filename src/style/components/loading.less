@@ -1,0 +1,72 @@
+#loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  animation: fin .25s;
+  animation-fill-mode: both;
+  &.fade-out {
+    animation: fout .25s;
+  }
+}
+
+#loading .ripple {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  animation-name: ripple;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+  transform: scale(0);
+  opacity: 0.6;
+}
+
+#loading .ripple1 {
+  background-color: #00A2E8;
+}
+
+#loading .ripple2 {
+  animation-delay: -250ms;
+  background-color: #006DE8;
+}
+
+#loading .ripple3 {
+  animation-delay: -500ms;
+  background-color: #3F60CC;
+}
+
+#loading .ripple4 {
+  animation-delay: -750ms;
+  background-color: #3F48CC;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fin {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

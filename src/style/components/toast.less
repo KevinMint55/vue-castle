@@ -1,0 +1,51 @@
+@time: .35s;
+.toast-block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  opacity: 0;
+  animation: fin @time;
+  animation-fill-mode: both;
+  &.fade-out {
+    animation: fout @time;
+  }
+  .toast {
+    min-width: 240px;
+    max-width: 600px;
+    padding: 16px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    user-select: none;
+    p {
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-size: 14px;
+    }
+  }
+  @keyframes fin {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fout {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}

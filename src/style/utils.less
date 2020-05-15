@@ -1,1 +1,31 @@
-@primary: #f938ab;
+// color
+@bg: #373d41;
+@bd: #e0e0e0;
+@text-blue: #2D8CF0;
+
+// shadow
+@shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+
+// 背景图片
+.bg(@url) {
+  background-image: url(@url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// 多行文本溢出
+.clamp(@n) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @n;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// flex布局和子元素对其方式
+.flex(@horizontal: center, @vertical: center) {
+  display: flex;
+  justify-content: @horizontal;
+  align-items: @vertical;
+}

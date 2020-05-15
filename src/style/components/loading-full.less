@@ -1,0 +1,69 @@
+.load-block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fin .25s;
+  animation-fill-mode: both;
+  background-color: rgba(0, 0, 0, 0.6);
+  &.fade-out {
+    animation: fout .25s;
+  }
+  .load {
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    font-size: 14px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    background-color: #fff;
+    i {
+      position: relative;
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      vertical-align: middle;
+      background: url('../../assets/common/loading2.png') no-repeat center;
+      background-size: contain;
+      backface-visibility: hidden;
+      animation: gif 1.2s infinite linear;
+      flex: none;
+    }
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 14px;
+    }
+    @keyframes gif {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(359deg);
+      }
+    }
+  }
+}
+
+@keyframes fin {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

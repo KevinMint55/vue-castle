@@ -1,3 +1,9 @@
+@import './utils';
+@import './transition';
+@import './components/toast';
+@import './components/loading-full';
+@import './components/loading';
+
 body,
 ul,
 ol,
@@ -38,7 +44,8 @@ body,
 #app {
   height: 100%;
   font-family: 'PingFang SC, Microsoft Yahei';
-  font-size: 12px;
+  color: #333;
+  font-size: 14px;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
 }
@@ -62,22 +69,12 @@ a {
 
 input,
 button {
-  -webkit-appearance: none;
   border: none;
   outline: none;
 }
 
-textarea {
-  font-family: 'PingFang SC, Microsoft Yahei';
-}
-
 button {
   user-select: none;
-}
-
-pre {
-  white-space: pre-wrap;
-  font-family: 'PingFang SC, Microsoft Yahei';
 }
 
 i {
@@ -88,4 +85,23 @@ i {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+div,
+section,
+ul {
+    &::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: #242B30;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #2D8CF0;
+        border-radius: 2px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #2D8CF0;
+    }
 }

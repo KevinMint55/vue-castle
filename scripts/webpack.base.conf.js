@@ -1,12 +1,18 @@
 const path = require('path');
+const fs = require('fs');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 function resolve(dir) {
-  return path.join(__dirname, '..', dir);
+  if (fs.existsSync(path.join(__dirname, '..', dir))) {
+    return path.join(__dirname, '..', dir);
+  }
+  return '';
 }
 
 module.exports = {
@@ -16,17 +22,15 @@ module.exports = {
   resolve: {
     modules: [
       resolve('src/core'),
-      path.resolve(__dirname, '../../node_modules'),
-      path.resolve(process.cwd(), './node_modules'),
       'node_modules',
     ],
-    extensions: ['.js', '.json', '.vue', '.scss'],
+    extensions: ['.js', '.json', '.vue', '.less', '.css'],
     alias: {
       vue$: 'vue/dist/vue.esm.js',
-      assets: resolve('src/assets/'),
-      components: resolve('src/components/'),
-      core: resolve('src/core/'),
-      style: resolve('src/style/'),
+      assets: resolve('src/assets'),
+      components: resolve('src/components'),
+      core: resolve('src/core'),
+      style: resolve('src/style'),
     },
   },
   module: {
@@ -140,5 +144,27 @@ module.exports = {
       filename: 'css/[name].[chunkhash].css',
       chunkFilename: 'css/[id].[chunkhash].css',
     }),
+    new CopyWebpackPlugin([
+      {
+        from: resolve('src/static'),
+        to: 'static',
+        ignore: ['.*'],
+      },
+      {
+        from: resolve('projectConfig.js') || resolve('projectConfig/index.js'),
+        to: './projectConfig.js',
+      },
+    ]),
+    new HtmlWebpackTagsPlugin({
+      tags: [
+        {
+          path: 'projectConfig.js',
+        },
+      ],
+      append: false,
+    }),
   ],
+  externals: {
+    $projectConfig: '$projectConfig',
+  },
 };

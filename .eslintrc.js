@@ -23,7 +23,6 @@ module.exports = {
     'default-case': 0,
     'func-names': 0,
     'no-param-reassign': 0,
-    'no-console': 'off',
     'no-underscore-dangle': 'off',
     'no-lonely-if': 0,
     'import/no-extraneous-dependencies': 0,

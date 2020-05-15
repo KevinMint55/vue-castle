@@ -1,10 +1,10 @@
-// import apis from 'apis';
+import { getGroups } from 'apis/groups';
 
 export default {
-  // getGroups({ state }) {
-  //   apis.getGroups().then((res) => {
-  //     state.groups = res;
-  //   }).catch(() => {
-  //   });
-  // },
+  getGroups({ state }) {
+    getGroups().then((res) => {
+      state.groups = res;
+    }).catch(() => {
+    });
+  },
 };
