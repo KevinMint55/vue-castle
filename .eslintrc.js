@@ -31,6 +31,7 @@ module.exports = {
     'prefer-promise-reject-errors': 'off',
     'no-restricted-globals': ['error', 'event'],
     'no-restricted-syntax': 'off',
+    'import/extensions': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',

@@ -3,7 +3,7 @@
  * @author Kevin on 2018/05/16.
  */
 
-const cdnURL = '';
+import $projectConfig from '$projectConfig';
 
 // 工具类方法
 export const regExp = (p, t = 'mp') => {
@@ -40,7 +40,7 @@ export const setCdn = {
   methods: {
     setCdn(url) {
       if (url) {
-        return `${cdnURL}${url}`;
+        return `${$projectConfig.cdnURL}${url}`;
       }
       return '';
     },

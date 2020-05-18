@@ -5,8 +5,6 @@
 <script>
 import Sign from 'components/Sign';
 import { register } from 'apis/user';
-// eslint-disable-next-line import/extensions
-import $projectConfig from '$projectConfig';
 
 export default {
   components: {
@@ -18,7 +16,7 @@ export default {
   },
   methods: {
     submit(form) {
-      console.log($projectConfig);
+      console.log(form);
       if (!form.username) {
         this.$message.warning('请输入用户名');
         return;
@@ -27,13 +25,12 @@ export default {
         this.$message.warning('请输入密码');
         return;
       }
-      if (!this.$regExp(this.form.password, 'pw')) {
+      if (!this.$regExp(form.password, 'pw')) {
         this.$message.warning('请输入6-16位数字、英文、下划线密码');
         return;
       }
       this.loading = true;
       register(form).then((res) => {
-        this.$log(res);
         localStorage.userinfo = JSON.stringify(res);
         this.$router.push({ path: '/list' });
       }).catch(() => {

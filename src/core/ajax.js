@@ -6,11 +6,12 @@
 import axios from 'axios';
 import qs from 'qs';
 import { Message } from 'element-ui';
+import $projectConfig from '$projectConfig';
 import router from '../router';
 import { loadOut } from './utils';
 
 // 配置接口地址
-axios.defaults.baseURL = '';
+axios.defaults.baseURL = $projectConfig.apiBaseURL;
 
 // 配置超时时间
 axios.defaults.timeout = 30e3;
