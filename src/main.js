@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import './style/reset.less';
 import './core';
+import './assets/iconfont/iconfont.css';
 
 new Vue({
   router,

@@ -16,7 +16,6 @@ export default {
   },
   methods: {
     submit(form) {
-      console.log(form);
       if (!form.username) {
         this.$message.warning('请输入用户名');
         return;

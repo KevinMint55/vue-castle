@@ -26,7 +26,6 @@ export default {
       }
       this.loading = true;
       login(form).then((res) => {
-        this.$log(res);
         localStorage.userinfo = JSON.stringify(res);
         this.$router.push({ path: '/list' });
       }).catch(() => {

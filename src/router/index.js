@@ -34,7 +34,7 @@ const router = new Router({
       meta: { title: '表格内容' },
       children: [
         {
-          name: 'views',
+          name: 'view',
           path: 'views/:vId',
           component: () => import('../views/tables/views/index.vue'),
           meta: { title: '项目视图' },
