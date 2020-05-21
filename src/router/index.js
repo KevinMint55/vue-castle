@@ -54,7 +54,20 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   NProgress.start();
-  next();
+  const unless = ['/login', '/register'];
+  if (unless.includes(to.path)) {
+    if (localStorage.userinfo) {
+      next('/list');
+    } else {
+      next();
+    }
+  } else {
+    if (localStorage.userinfo) {
+      next();
+    } else {
+      next('/login');
+    }
+  }
 });
 
 router.afterEach((to) => {

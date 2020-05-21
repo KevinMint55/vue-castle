@@ -83,7 +83,7 @@ import { setCdn } from 'utils';
 import { updatePassword, updateInfo } from 'apis/user';
 import $projectConfig from '$projectConfig';
 
-const socket = new Io(`${$projectConfig.apiBaseURL}/`, {
+const socket = new Io($projectConfig.baseURL, {
   path: '/api/ws',
   query: {
     userId: JSON.parse(localStorage.userinfo)._id,

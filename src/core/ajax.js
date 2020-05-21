@@ -11,7 +11,7 @@ import router from '../router';
 import { loadOut } from './utils';
 
 // 配置接口地址
-axios.defaults.baseURL = $projectConfig.apiBaseURL;
+axios.defaults.baseURL = `${$projectConfig.baseURL}/api`;
 
 // 配置超时时间
 axios.defaults.timeout = 30e3;

@@ -45,11 +45,8 @@ export default {
       this.getData();
     },
     data: {
-      handler(val, oldVal) {
+      handler(val) {
         if (val) {
-          if (JSON.stringify(val) === JSON.stringify(oldVal)) {
-            return;
-          }
           updateViewData({
             viewId: this.$route.params.vId,
             content: val,
@@ -64,7 +61,6 @@ export default {
   mounted() {
     this.$store.state.socket.on('updateView', (vId, data, userId) => {
       if (vId === this.$route.params.vId && userId !== this.$store.state.userinfo._id) {
-        console.log('data', data);
         data.forEach((item, index) => {
           Object.keys(item).forEach((key) => {
             this.data[index][key] = item[key];

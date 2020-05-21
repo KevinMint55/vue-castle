@@ -8308,10 +8308,10 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue-willtable@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npm.taobao.org/vue-willtable/download/vue-willtable-2.0.1.tgz#54d130e4614fb53a2611c5105878b45b5e27e662"
-  integrity sha1-VNEw5GFPtTomEcUQWHi0W14n5mI=
+vue-willtable@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.npm.taobao.org/vue-willtable/download/vue-willtable-2.0.2.tgz#f6e578b1db45fe72669a7808b1397ec462596745"
+  integrity sha1-9uV4sdtF/nJmmngIsTl+xGJZZ0U=
 
 vue@^2.6.11:
   version "2.6.11"
