@@ -5,6 +5,7 @@ stages:
 
 cache:
   paths:
+    - dist
     - node_modules
 
 before_script:
