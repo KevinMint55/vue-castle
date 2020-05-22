@@ -1,0 +1,49 @@
+
+stages:
+  - build
+  - deploy
+
+cache:
+  paths:
+    - node_modules
+
+before_script:
+  - hostname
+  - node -v
+  - npm -v
+  - git --version
+  - yarn
+
+编译:
+  stage: build
+  script:
+    - yarn build
+  only:
+    - master
+  except:
+    - tags
+    - api
+    - external
+    - pipelines
+    - pushes
+    - schedules
+    - triggers
+    # - web
+
+部署:
+  stage: deploy
+  script:
+    - rm -rf /root/webpages/castle
+    - mkdir -p /root/webpages/castle
+    - cp -rf dist/* /root/webpages/castle
+  only:
+    - master
+  except:
+    - tags
+    - api
+    - external
+    - pipelines
+    - pushes
+    - schedules
+    - triggers
+    # - web

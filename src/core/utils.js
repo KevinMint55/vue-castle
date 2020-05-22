@@ -101,11 +101,8 @@ export const toast = (t, fn) => {
     }
     window.tip.classList.add('fade-out');
     setTimeout(() => {
-      try {
+      if (window.tip) {
         document.body.removeChild(window.tip);
-      } catch (e) {
-        console.log(e);
-      } finally {
         window.tip = undefined;
       }
       if (fn) {

@@ -153,12 +153,12 @@ export default {
     initCurView() {
       this.tables.some((item) => {
         if (item.views.length > 0) {
-          if (!this.$route.params.vId || !item.views.some((v) => v._id === this.$route.params.vId)) {
+          if (!this.$route.params.vId) {
             this.$router.push({ name: 'view', params: { vId: item.views[0]._id } });
           }
           return true;
         }
-        this.$router.push({ name: 'table', params: { pId: this.$route.params.pId } });
+        this.$router.push({ name: 'tables', params: { pId: this.$route.params.pId } });
         return false;
       });
     },

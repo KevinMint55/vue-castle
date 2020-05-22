@@ -36,17 +36,17 @@ const webpackConfig = {
         },
       },
     },
-    minimizer: [
-      new UglifyJSPlugin({
-        uglifyOptions: {
-          output: {
-            comments: false,
-          },
-        },
-        cache: true,
-        parallel: true,
-      }),
-    ],
+    // minimizer: [
+    //   new UglifyJSPlugin({
+    //     uglifyOptions: {
+    //       output: {
+    //         comments: false,
+    //       },
+    //     },
+    //     cache: true,
+    //     parallel: true,
+    //   }),
+    // ],
   },
 };
 
