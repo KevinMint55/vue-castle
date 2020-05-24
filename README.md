@@ -1,11 +1,20 @@
-### 环境准备
+### 前言
 
-- nodejs 10+
+在闲余时间自己折腾了一个 [可编辑的表格组件](https://github.com/KevinMint55/vue-willtable)，于是基于编辑组件又开发了该实时共享编辑表格系统。
 
-建议将npm源指向taobao源，否则容易产生依赖安装错误。执行如下命令：
-```bash
-npm config set registry https://registry.npm.taobao.org
-```
+### 部分截图
+
+#### 团队与项目列表
+
+![image](https://qiniu.willwuwei.com/castle-list.png)
+
+#### 表格与视图列表以及编辑表格
+
+![image](https://qiniu.willwuwei.com/castle-view.png)
+
+### 技术栈
+
+Vue2 + Vuex + Vue-router + Webpack + axios + less + flex + socket.io
 
 ### 开发指南
 
@@ -13,7 +22,7 @@ npm config set registry https://registry.npm.taobao.org
 # install dependencies
 npm install / yarn
 
-# serve with hot reload at localhost:1000
+# serve with hot reload at localhost:2003
 npm run dev / yarn dev
 
 # build for production with minification
@@ -23,9 +32,12 @@ npm run build / yarn start
 ### 项目目录结构
 
 ```
-	projectName                        # 项目名称
+	castle                             # 项目名称
 	│
   ├── dist                           # 生成的打包文件
+	│
+  ├── projectConfig                  
+	│		└── index.js                    # 项目配置文件
   │
   ├── node_modules                   # 编译依赖的模块
   │
@@ -34,6 +46,12 @@ npm run build / yarn start
   ├── src                            # 源码目录
   │	 ├── assets                	     # 资源目录
 	│  ├── core                        # 核心文件目录
+	|  |	├── apis                     # api列表
+	|  |	├── directives							 # 自定义指令
+	|  |	├── ajax.js                  # 请求拦截器与请求方法
+	|  |	├── element.js               # 按需引用element UI组件
+	|  |	├── index.js                 # 统一输出引用
+	|  |	└── utils.js                 # 通用工具方法
   │  ├── static                      # 静态文件
 	│  ├── router                      # 路由目录
 	│  ├── store			                 # 状态管理目录
@@ -45,6 +63,7 @@ npm run build / yarn start
 	│	 └── main.js                     # 入口文件
 	│
   ├── .gitignore                     # git文件忽略
+	├── .gitlab-ci.yml                 # gitlab ci配置文件
 	├── package.json                   # 项目依赖配置
 	└── READMEAD.md             		   # 开发说明
 
