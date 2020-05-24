@@ -2,6 +2,8 @@
 
 在闲余时间自己折腾了一个 [可编辑的表格组件](https://github.com/KevinMint55/vue-willtable)，于是基于编辑组件又开发了该实时共享编辑表格系统。
 
+[Demo](https://castle.willwuwei.com/)
+
 ### 部分截图
 
 #### 团队与项目列表
