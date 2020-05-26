@@ -4,6 +4,8 @@
 
 [Demo](https://castle.willwuwei.com/)
 
+[后台项目地址](https://github.com/KevinMint55/node-castle)
+
 ### 部分截图
 
 #### 团队与项目列表
@@ -28,7 +30,7 @@ npm install / yarn
 npm run dev / yarn dev
 
 # build for production with minification
-npm run build / yarn start
+npm run build / yarn build
 ```
 
 ### 项目目录结构
