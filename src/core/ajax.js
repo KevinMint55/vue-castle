@@ -5,13 +5,18 @@
 
 import axios from 'axios';
 import qs from 'qs';
-import { Message } from 'element-ui';
+import {
+  Message,
+} from 'element-ui';
 import $projectConfig from '$projectConfig';
 import router from '../router';
-import { loadOut } from './utils';
+import {
+  loadOut,
+  TxtDecrypt,
+} from './utils';
 
 // 配置接口地址
-axios.defaults.baseURL = `${$projectConfig.baseURL}/api`;
+axios.defaults.baseURL = `${$projectConfig.apiBaseURL}`;
 
 // 配置超时时间
 axios.defaults.timeout = 30e3;
@@ -23,7 +28,9 @@ axios.defaults.timeout = 30e3;
 axios.interceptors.request.use((req) => {
   // 若是有做鉴权token , 就给头部带上token
   if (localStorage.userinfo) {
-    const { token } = JSON.parse(localStorage.userinfo);
+    const {
+      token,
+    } = TxtDecrypt(localStorage.userinfo);
     req.headers.common.Authorization = `Bearer ${token}`;
   }
   return req;
@@ -33,7 +40,9 @@ axios.interceptors.request.use((req) => {
 axios.interceptors.response.use((response) => {
   loadOut();
   const res = response.data;
-  const { config } = response;
+  const {
+    config,
+  } = response;
   if (res.status === 200) {
     return res.data;
   }
@@ -42,7 +51,9 @@ axios.interceptors.response.use((response) => {
     if (res.status === 4001) {
       setTimeout(() => {
         localStorage.clear();
-        router.push({ path: '/login' });
+        router.push({
+          path: '/login',
+        });
       }, 2000);
     }
   }

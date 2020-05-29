@@ -7,6 +7,8 @@ import {
   loadInFull,
   toast,
   regExp,
+  ObjEncrypt,
+  TxtDecrypt,
 } from 'utils';
 
 import Vue from 'vue';
@@ -20,5 +22,7 @@ Vue.prototype.$loadIn = loadIn;
 Vue.prototype.$loadInFull = loadInFull;
 Vue.prototype.$toast = toast;
 Vue.prototype.$regExp = regExp;
+Vue.prototype.$ObjEncrypt = ObjEncrypt;
+Vue.prototype.$TxtDecrypt = TxtDecrypt;
 
 Vue.component('KmButton', WwButton);

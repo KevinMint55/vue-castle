@@ -32,6 +32,7 @@ module.exports = {
     'no-restricted-globals': ['error', 'event'],
     'no-restricted-syntax': 'off',
     'import/extensions': 0,
+    'eol-last': 0,
   },
   parserOptions: {
     parser: 'babel-eslint',

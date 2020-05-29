@@ -1,10 +1,16 @@
 <template>
-  <sign submitText="登录" tipText="还没有账号？立即注册" linkPath="/register" @submit="submit"/>
+  <sign
+    submitText="登录"
+    tipText="还没有账号？立即注册"
+    linkPath="/register"
+    @submit="submit"
+  />
 </template>
 
 <script>
 import Sign from 'components/Sign';
 import { login } from 'apis/user';
+import { ObjEncrypt } from 'utils';
 
 export default {
   components: {
@@ -26,7 +32,7 @@ export default {
       }
       this.loading = true;
       login(form).then((res) => {
-        localStorage.userinfo = JSON.stringify(res);
+        localStorage.userinfo = ObjEncrypt(res);
         this.$router.push({ path: '/list' });
       }).catch(() => {
       }).finally(() => {

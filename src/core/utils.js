@@ -3,7 +3,10 @@
  * @author Kevin on 2018/05/16.
  */
 
+import CryptoJS from 'crypto-js';
 import $projectConfig from '$projectConfig';
+
+const secretKey = 'castle';
 
 // 工具类方法
 export const regExp = (p, t = 'mp') => {
@@ -65,10 +68,7 @@ export const loadIn = () => {
   }
   window.load = document.createElement('div');
   window.load.id = 'loading';
-  window.load.innerHTML = '<div class="ripple ripple1"></div>'
-    + '<div class="ripple ripple2"></div>'
-    + '<div class="ripple ripple3"></div>'
-    + '<div class="ripple ripple4"></div>';
+  window.load.innerHTML = '<div class="ripple ripple1"></div><div class="ripple ripple2"></div><div class="ripple ripple3"></div><div class="ripple ripple4"></div>';
   document.body.appendChild(window.load);
 };
 
@@ -110,4 +110,11 @@ export const toast = (t, fn) => {
       }
     }, 350);
   }, 2000);
+};
+
+export const ObjEncrypt = (obj) => CryptoJS.AES.encrypt(JSON.stringify(obj), secretKey).toString();
+
+export const TxtDecrypt = (txt) => {
+  const bytes = CryptoJS.AES.decrypt(txt, secretKey);
+  return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 };

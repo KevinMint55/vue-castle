@@ -1,28 +1,54 @@
 <template>
   <div>
     <header class="header">
-      <div class="left" v-clickoutside="hideProject" :class="{ active: showProject}">
-        <div class="bar" @click="showProject = !showProject">
+      <div
+        class="left"
+        v-clickoutside="hideProject"
+        :class="{ active: showProject}"
+      >
+        <div
+          class="bar"
+          @click="showProject = !showProject"
+        >
           <span>切换项目</span>
           <i class="iconfont km-down"></i>
         </div>
         <ul class="dropdown-menu">
-          <li v-for="group in $store.state.groups" :key="group._id">
+          <li
+            v-for="group in $store.state.groups"
+            :key="group._id"
+          >
             <h3>{{ group.name }}</h3>
             <ul class="project-wrapper">
-              <li class="project" v-for="project in group.projects" :key="project._id" @click="switchProject(project._id)">{{ project.name }}</li>
+              <li
+                class="project"
+                v-for="project in group.projects"
+                :key="project._id"
+                @click="switchProject(project._id)"
+              >{{ project.name }}</li>
             </ul>
           </li>
         </ul>
       </div>
       <div class="center">
         <router-link to="/list">
-          <img src="/static/img/castle.png" alt="">
+          <img
+            src="/static/img/castle.png"
+            alt=""
+          >
         </router-link>
       </div>
       <div class="right">
-        <div class="user" v-clickoutside="hideMenu" :class="{ active: showMenu}" @click="showMenu = !showMenu">
-          <img :src="setCdn($store.state.userinfo.avatar)" alt="">
+        <div
+          class="user"
+          v-clickoutside="hideMenu"
+          :class="{ active: showMenu}"
+          @click="showMenu = !showMenu"
+        >
+          <img
+            :src="setCdn($store.state.userinfo.avatar)"
+            alt=""
+          >
           <span>{{ $store.state.userinfo.nickname }}</span>
           <i class="iconfont km-down"></i>
           <ul class="dropdown-menu">
@@ -33,45 +59,111 @@
         </div>
       </div>
     </header>
-    <el-dialog title="修改资料" :visible.sync="infoModal" width="440px">
-      <el-form ref="info" :model="infoForm" :rules="infoRules" label-width="100px">
-        <el-form-item label="账号" prop="username">
-          <el-input v-model="infoForm.username" disabled></el-input>
+    <el-dialog
+      title="修改资料"
+      :visible.sync="infoModal"
+      width="440px"
+    >
+      <el-form
+        ref="info"
+        :model="infoForm"
+        :rules="infoRules"
+        label-width="100px"
+      >
+        <el-form-item
+          label="账号"
+          prop="username"
+        >
+          <el-input
+            v-model="infoForm.username"
+            disabled
+          ></el-input>
         </el-form-item>
-        <el-form-item label="昵称" prop="nickname">
+        <el-form-item
+          label="昵称"
+          prop="nickname"
+        >
           <el-input v-model.trim="infoForm.nickname"></el-input>
         </el-form-item>
         <el-form-item label="头像">
           <p class="avatar-notice">支持jpg、png格式大小1M以内的图片</p>
           <div class="avatar-wrap">
-            <img :src="infoForm.avatar" alt="avatar">
+            <img
+              :src="infoForm.avatar"
+              alt="avatar"
+            >
             <span>
               <i class="iconfont km-zhaopian"></i>
-              <input type="file" @change="handleChange" accept="image/gif,image/jpeg,image/jpg,image/png" ref="avatar">
+              <input
+                type="file"
+                @change="handleChange"
+                accept="image/gif,image/jpeg,image/jpg,image/png"
+                ref="avatar"
+              >
             </span>
           </div>
         </el-form-item>
       </el-form>
       <div slot="footer">
         <el-button @click="infoModal = false">取 消</el-button>
-        <el-button type="primary" @click="infoSubmit">确 定</el-button>
+        <el-button
+          type="primary"
+          @click="infoSubmit"
+        >确 定</el-button>
       </div>
     </el-dialog>
-    <el-dialog title="修改密码" :visible.sync="pwdModal" width="440px" @close="$refs.pwd.resetFields()">
-      <el-form ref="pwd" :model="pwdForm" :rules="pwdRules" label-width="100px">
-        <el-form-item label="原始密码" prop="oldPwd">
-          <el-input type="password" v-model.trim="pwdForm.oldPwd" placeholder="请输入原密码" maxlength="16"></el-input>
+    <el-dialog
+      title="修改密码"
+      :visible.sync="pwdModal"
+      width="440px"
+      @close="$refs.pwd.resetFields()"
+    >
+      <el-form
+        ref="pwd"
+        :model="pwdForm"
+        :rules="pwdRules"
+        label-width="100px"
+      >
+        <el-form-item
+          label="原始密码"
+          prop="oldPwd"
+        >
+          <el-input
+            type="password"
+            v-model.trim="pwdForm.oldPwd"
+            placeholder="请输入原密码"
+            maxlength="16"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="新密码" prop="newPwd">
-          <el-input type="password" v-model.trim="pwdForm.newPwd" placeholder="请输入6-16位数字、英文、下划线密码" maxlength="16"></el-input>
+        <el-form-item
+          label="新密码"
+          prop="newPwd"
+        >
+          <el-input
+            type="password"
+            v-model.trim="pwdForm.newPwd"
+            placeholder="请输入6-16位数字、英文、下划线密码"
+            maxlength="16"
+          ></el-input>
         </el-form-item>
-        <el-form-item label="确认密码" prop="confirmPwd">
-          <el-input type="password" v-model.trim="pwdForm.confirmPwd" placeholder="请再次输入密码" maxlength="16"></el-input>
+        <el-form-item
+          label="确认密码"
+          prop="confirmPwd"
+        >
+          <el-input
+            type="password"
+            v-model.trim="pwdForm.confirmPwd"
+            placeholder="请再次输入密码"
+            maxlength="16"
+          ></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer">
         <el-button @click="pwdModal = false">取 消</el-button>
-        <el-button type="primary" @click="pwdSubmit">确 定</el-button>
+        <el-button
+          type="primary"
+          @click="pwdSubmit"
+        >确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -79,14 +171,14 @@
 
 <script>
 import Io from 'socket.io-client';
-import { setCdn } from 'utils';
+import { setCdn, TxtDecrypt, ObjEncrypt } from 'utils';
 import { updatePassword, updateInfo } from 'apis/user';
 import $projectConfig from '$projectConfig';
 
-const socket = new Io($projectConfig.baseURL, {
+const socket = new Io($projectConfig.apiBaseURL, {
   path: '/api/ws',
   query: {
-    userId: JSON.parse(localStorage.userinfo)._id,
+    userId: TxtDecrypt(localStorage.userinfo)._id,
   },
 });
 
@@ -148,7 +240,7 @@ export default {
   },
   created() {
     if (localStorage.userinfo) {
-      this.$store.commit('setUserinfo', JSON.parse(localStorage.userinfo));
+      this.$store.commit('setUserinfo', TxtDecrypt(localStorage.userinfo));
       this.$store.commit('setSocket', socket);
     }
     this.getGroups();
@@ -205,7 +297,7 @@ export default {
       this.$refs.info.validate((valid) => {
         if (valid) {
           updateInfo(this.infoForm).then((res) => {
-            localStorage.userinfo = JSON.stringify(res);
+            localStorage.userinfo = ObjEncrypt(res);
             this.$store.commit('setUserinfo', res);
             this.infoModal = false;
             this.$message.success('修改成功！');
